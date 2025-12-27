@@ -4,8 +4,12 @@ class MyFirstAnimation(Scene):
     def construct(self):
         # --- 1. DEFINE & POSITION OBJECTS ---
         # We define them fully visible first to get the positioning right
-        sqr_mid = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#ffca01")
-        
+        sqr_mid = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color=BLACK, stroke_color = BLACK)
+
+        # 1. Set the background color to the specific yellow/orange
+        sqr_mid_tr = RoundedRectangle(corner_radius=0.3, height=1.9, width=1.9, fill_opacity=1, color="#ffca01")
+
+
         sqr_mid_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid, LEFT*0.5)
         sqr_mid_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid_l1, LEFT*0.5)
         sqr_mid_l3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#eed684").next_to(sqr_mid_l2, LEFT*0.5)
@@ -33,13 +37,29 @@ class MyFirstAnimation(Scene):
         sqr_midd2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#b69620").next_to(sqr_midd1, DOWN*0.5)
         sqr_midd2_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f9d85d").next_to(sqr_midd2, LEFT*0.5)
 
+        #Kshape Creation
+        #Create stroke 1
+        st1 = Rectangle(width=0.25, height=1.6).rotate(140 *DEGREES).move_to(UP*0.23+LEFT*0.1)
+        topc = Rectangle(width=0.5, height=0.15).move_to(UP*0.85+RIGHT*0.3)
+        #Create stroke 2
+        st2 = Rectangle(width=0.25, height=1.3).rotate(-130 *DEGREES).move_to(DOWN*0.34 + RIGHT*0.1)
+        bottomc = Rectangle(width=0.5, height=0.18).move_to(DOWN*0.76+RIGHT*0.42)
+
+        k_raw = Union(st1, st2)
+        k_raw.set_fill(BLACK, opacity=1)
+        k_raw.set_stroke(width=0)
+        k_shape= Difference(k_raw, topc)
+        k_shape= Difference(k_shape, bottomc)
+        k_shape.set_fill(BLACK, opacity=1)
+        k_shape.set_stroke(width=0)
+
         # --- 2. HELPER FUNCTION ---
         def flash_at(obj, start_time):
             # 1. Save the "Perfect" state (Visible & Full Size)
             target_state = obj.copy()
-            
+
             # 2. Crush the actual object to a point so it is INVISIBLE initially
-            obj.scale(0) 
+            obj.scale(0)
 
             # 3. Create the Sequence
             if start_time == 0:
@@ -50,20 +70,22 @@ class MyFirstAnimation(Scene):
             else:
                 return Succession(
                     # DELAY: Object stays at scale 0 (Invisible)
-                    Animation(Mobject(), run_time=start_time), 
-                    
+                    Animation(Mobject(), run_time=start_time),
+
                     # GROW: Transform from scale 0 to target_state
-                    Transform(obj, target_state, run_time=2.1), 
-                    
+                    Transform(obj, target_state, run_time=2.1),
+
                     # SHRINK: Fade out
                     FadeOut(obj, scale=0, run_time=2.1)
                 )
 
         # --- 3. ANIMATION ---
         self.play(
+            GrowFromCenter(sqr_mid_tr),
+            GrowFromCenter(k_shape),
             AnimationGroup(
                 # Now we call the function which handles the hiding automatically
-                
+
                 # Line 1: Starts immediately
                 flash_at(sqr_mid_r1, start_time=0.0),
 
@@ -109,11 +131,11 @@ class MyFirstAnimation(Scene):
                 # Line 12: Starts at 3.3s
                 #flash_at(sqr_mid,      start_time=3.3),
                 flash_at(sqr_midu3,    start_time=3.3),
-                
-                lag_ratio=0 
+
+                lag_ratio=0
             ),
-            run_time=4 
-            
+            run_time=4,
+
         )
-        
-        self.wait(4)
+
+        self.wait(1)
