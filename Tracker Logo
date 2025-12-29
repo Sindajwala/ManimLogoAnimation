@@ -4,38 +4,38 @@ class MyFirstAnimation(Scene):
     def construct(self):
         # --- 1. DEFINE & POSITION OBJECTS ---
         # We define them fully visible first to get the positioning right
-        sqr_mid = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color=BLACK, stroke_color = BLACK)
+        sqr_mid = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color=BLACK, stroke_color = BLACK).set_z_index(1)
 
         # 1. Set the background color to the specific yellow/orange
-        sqr_mid_tr = RoundedRectangle(corner_radius=0.3, height=1.9, width=1.9, fill_opacity=1, color="#ffca01")
+        sqr_mid_tr = RoundedRectangle(corner_radius=0.3, height=1.9, width=1.9, fill_opacity=1, color="#ffca01").set_z_index(3)
+        sqr_mid_trs = RoundedRectangle(corner_radius=0.3, height=1.9, width=1.9, fill_opacity=0.21, color="BLACK", stroke_width=0).set_z_index(2).shift(DOWN*0.1+RIGHT*0.1)
 
+        sqr_mid_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid, LEFT*0.5).set_z_index(1)
+        sqr_mid_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid_l1, LEFT*0.5).set_z_index(1)
+        sqr_mid_l3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#eed684").next_to(sqr_mid_l2, LEFT*0.5).set_z_index(1)
+        sqr_mid_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid, RIGHT*0.5).set_z_index(1)
+        sqr_mid_r2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid_r1, RIGHT*0.5).set_z_index(1)
 
-        sqr_mid_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid, LEFT*0.5)
-        sqr_mid_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid_l1, LEFT*0.5)
-        sqr_mid_l3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#eed684").next_to(sqr_mid_l2, LEFT*0.5)
-        sqr_mid_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid, RIGHT*0.5)
-        sqr_mid_r2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_mid_r1, RIGHT*0.5)
+        sqr_midu1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c83d").next_to(sqr_mid, UP*0.5).set_z_index(1)
+        sqr_midu1_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#c9b050").next_to(sqr_midu1, LEFT*0.5).set_z_index(1)
+        sqr_midu1_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c73e").next_to(sqr_midu1_l1, LEFT*0.5).set_z_index(1)
+        sqr_midu1_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#c9b050").next_to(sqr_midu1, RIGHT*0.5).set_z_index(1)
 
-        sqr_midu1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c83d").next_to(sqr_mid, UP*0.5)
-        sqr_midu1_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#c9b050").next_to(sqr_midu1, LEFT*0.5)
-        sqr_midu1_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c73e").next_to(sqr_midu1_l1, LEFT*0.5)
-        sqr_midu1_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#c9b050").next_to(sqr_midu1, RIGHT*0.5)
+        sqr_midu2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c83b").next_to(sqr_midu1, UP*0.5).set_z_index(1)
+        sqr_midu2_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#fdeb01").next_to(sqr_midu2, RIGHT*0.5).set_z_index(1)
+        sqr_midu2_r2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#fdca03").next_to(sqr_midu2_r1, RIGHT*0.5).set_z_index(1)
 
-        sqr_midu2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c83b").next_to(sqr_midu1, UP*0.5)
-        sqr_midu2_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#fdeb01").next_to(sqr_midu2, RIGHT*0.5)
-        sqr_midu2_r2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#fdca03").next_to(sqr_midu2_r1, RIGHT*0.5)
+        sqr_midu3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83d").next_to(sqr_midu2_r1, UP*0.5).set_z_index(1)
 
-        sqr_midu3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83d").next_to(sqr_midu2_r1, UP*0.5)
+        sqr_midd1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c83d").next_to(sqr_mid, DOWN*0.5).set_z_index(1)
+        sqr_midd1_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#bc9c1d").next_to(sqr_midd1, LEFT*0.5).set_z_index(1)
+        sqr_midd1_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83d").next_to(sqr_midd1_l1, LEFT*0.5).set_z_index(1)
+        sqr_midd1_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#ebba0d").next_to(sqr_midd1, RIGHT*0.5).set_z_index(1)
+        sqr_midd1_r2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#bc9c1d").next_to(sqr_midd1_r1, RIGHT*0.5).set_z_index(1)
+        sqr_midd1_r3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_midd1_r2, RIGHT*0.5).set_z_index(1)
 
-        sqr_midd1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f2c83d").next_to(sqr_mid, DOWN*0.5)
-        sqr_midd1_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#bc9c1d").next_to(sqr_midd1, LEFT*0.5)
-        sqr_midd1_l2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83d").next_to(sqr_midd1_l1, LEFT*0.5)
-        sqr_midd1_r1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#ebba0d").next_to(sqr_midd1, RIGHT*0.5)
-        sqr_midd1_r2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#bc9c1d").next_to(sqr_midd1_r1, RIGHT*0.5)
-        sqr_midd1_r3 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f0c83b").next_to(sqr_midd1_r2, RIGHT*0.5)
-
-        sqr_midd2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#b69620").next_to(sqr_midd1, DOWN*0.5)
-        sqr_midd2_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f9d85d").next_to(sqr_midd2, LEFT*0.5)
+        sqr_midd2 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#b69620").next_to(sqr_midd1, DOWN*0.5).set_z_index(1)
+        sqr_midd2_l1 = RoundedRectangle(corner_radius=0.05, height=0.5, width=0.5, fill_opacity=1, color="#f9d85d").next_to(sqr_midd2, LEFT*0.5).set_z_index(1)
 
         #Kshape Creation
         #Create stroke 1
@@ -52,6 +52,7 @@ class MyFirstAnimation(Scene):
         k_shape= Difference(k_shape, bottomc)
         k_shape.set_fill(BLACK, opacity=1)
         k_shape.set_stroke(width=0)
+        k_shape.set_z_index(4)
 
         # --- 2. HELPER FUNCTION ---
         def flash_at(obj, start_time):
@@ -82,6 +83,7 @@ class MyFirstAnimation(Scene):
         # --- 3. ANIMATION ---
         self.play(
             GrowFromCenter(sqr_mid_tr),
+            GrowFromCenter(sqr_mid_trs),
             GrowFromCenter(k_shape),
             AnimationGroup(
                 # Now we call the function which handles the hiding automatically
@@ -129,7 +131,7 @@ class MyFirstAnimation(Scene):
                 flash_at(sqr_midu2,    start_time=3.0),
 
                 # Line 12: Starts at 3.3s
-                #flash_at(sqr_mid,      start_time=3.3),
+                flash_at(sqr_mid,      start_time=3.3),
                 flash_at(sqr_midu3,    start_time=3.3),
 
                 lag_ratio=0
@@ -137,5 +139,91 @@ class MyFirstAnimation(Scene):
             run_time=4,
 
         )
+
+        sqr_mid_tr.generate_target()
+        sqr_mid_tr.target.scale(0.7)
+        k_shape.generate_target()
+        k_shape.target.scale(0.7)
+
+        self.play(
+            MoveToTarget(sqr_mid_tr), MoveToTarget(k_shape),
+            run_time = 1.5,
+        )
+
+        sqr_mid_tr.generate_target()
+        sqr_mid_tr.target.shift(LEFT*2)
+        k_shape.generate_target()
+        k_shape.target.shift(LEFT*2)
+
+        small_t = Text("A   C   C   E   S   S   O   R   I   E   S").shift(RIGHT*0.9+DOWN*0.5).scale(0.3)
+
+        #Creating TRACK
+
+      #Creating T
+        t1 = Rectangle(width=1.3, height=0.25, color=WHITE, fill_opacity=1).shift(LEFT*0.6+UP*0.6).scale(0.6)
+        t2 = Rectangle(width=0.25, height=1.3, color=WHITE, fill_opacity=1).shift(LEFT*0.6+UP*0.2).scale(0.6)
+
+      #Creating R
+        rl1= Rectangle(width=0.7, height=0.25, color=WHITE, fill_opacity=1).shift(RIGHT*0.2+UP*0.6).scale(0.6)
+        r1 = AnnularSector(inner_radius=0.25, outer_radius=0.545, angle=PI , start_angle=270 * DEGREES, fill_opacity=1, color=WHITE).shift(RIGHT*0.28+UP*0.365).scale(0.6)
+        rl2= Rectangle(width=0.7, height=0.25, color=WHITE, fill_opacity=1).shift(RIGHT*0.2+UP*0.12).scale(0.6)
+        rl3= Rectangle(width=0.25, height=0.7, color=WHITE, fill_opacity=1).shift(RIGHT*0.06+DOWN*0.02).scale(0.6)
+        rl4 = Rectangle(width=0.25, height=0.8, color=WHITE, fill_opacity=1).shift(RIGHT*0.55+DOWN*0.02).rotate(-155 *DEGREES).scale(0.6)
+
+      #Creating A
+        a1 = Rectangle(width=0.25, height=1.5, color=WHITE, fill_opacity=1).rotate(-155 *DEGREES).shift(RIGHT*1.5+UP*0.15).scale(0.6)
+        a2 = Rectangle(width=0.25, height=1.5, color=WHITE, fill_opacity=1).rotate( 155 *DEGREES).shift(RIGHT*1.1+UP*0.15).scale(0.6)
+        a3 = Triangle(color=WHITE, fill_opacity=1).rotate(60*DEGREES).scale(0.2).shift(RIGHT*1.05+UP*0.65).scale(0.5)
+
+      #Creating C
+        c1 = AnnularSector(inner_radius=0.55, outer_radius=0.8, angle=270*DEGREES , start_angle=45 * DEGREES, fill_opacity=1, color=WHITE).shift(RIGHT*2.3+UP*0.25).scale(0.6)
+
+      #Creating K
+
+      #Create stroke 1
+        st1t = Rectangle(width=0.25, height=1.6).rotate(135 *DEGREES).move_to(UP*0.23+LEFT*0.1)
+        topct = Rectangle(width=0.5, height=0.23).move_to(UP*0.8+RIGHT*0.3)
+
+        st2t = Rectangle(width=0.25, height=1.3).rotate(-130 *DEGREES).move_to(DOWN*0.34 + RIGHT*0.1)
+        bottomct = Rectangle(width=0.5, height=0.18).move_to(DOWN*0.76+RIGHT*0.42)
+
+        k_rawt = Union(st1t, st2t)
+        k_rawt.set_fill(RED, opacity=1)
+        k_rawt.set_stroke(width=0)
+        k_shapet= Difference(k_rawt, topct)
+        k_shapet= Difference(k_shapet, bottomct)
+        k_shapet.set_fill(RED, opacity=1)
+        k_shapet.set_stroke(width=0)
+        k_shapet.scale(0.6)
+        k_shapet.shift(RIGHT*3.05+UP*0.25)
+
+        black = Rectangle(width=5, height=0.15, color=BLACK, fill_opacity=1).shift(RIGHT*1.5+DOWN*0.32)
+
+
+
+
+        self.play(
+            MoveToTarget(sqr_mid_tr), MoveToTarget(k_shape),
+            Write((small_t), reverse=True, remover=False),
+            run_time = 2.5,
+        )
+
+        self.play(
+          Uncreate(sqr_mid_trs),
+          GrowFromEdge(t1,LEFT),
+          GrowFromEdge(t2,UP),
+          Create(rl1),
+          Create(rl2),
+          Create(rl3),
+          Create(rl4),
+          Create(r1),
+          Create(a1),
+          Create(a2),
+          Create(a3),
+          Create(c1),
+          Create(k_shapet),
+          Create(black)
+
+      )
 
         self.wait(1)
